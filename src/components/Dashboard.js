@@ -30,7 +30,7 @@ const data = [
   {
     id: 4,
     label: "Interviews Per Day",
-    getValue: getMostPopularDay
+    getValue: getInterviewsPerDay
   }
 ];
 
@@ -78,6 +78,7 @@ class Dashboard extends Component {
 
   render() {
     const dashboardClasses = classnames("dashboard", {'dashboard--focused': this.state.focused});  
+    this.socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
 
     if (this.state.loading) {
       return <Loading />;
